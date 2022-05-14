@@ -1,0 +1,71 @@
+// Solidity program
+// to store
+// Person Details
+pragma solidity ^0.6.8;
+
+// Creating a Smart Contract
+contract StructDemo{
+
+// Structure of Person
+struct Person{
+	
+	// State variables
+	int Aadharno;
+    string name;
+	string dob;
+	string location;
+	string walletaddress;
+}
+
+Person []peeps;
+
+// Person details
+function addPerson(
+	int Aadharno, string memory name,
+    string memory dob,
+	string memory location,
+	string memory walletaddress
+) public{
+	Person memory e
+		=Person(Aadharno,name
+				dob,
+				location,
+				walletaddress);
+	peeps.push(e);
+}
+
+// Function to get
+// details of Person
+function getPerson(
+	int Aadharno
+) public view returns(
+	string memory,
+    string memory,
+	string memory,
+	string memory){
+	uint i;
+	for(i=0;i<peeps.length;i++)
+	{
+		Person memory e
+			=peeps[i];
+		
+		// Looks for a matching
+		// Person id
+		if(e.Aadharno==Aadharno)
+		{
+				return(e.name,e.dob,
+					e.location,
+					e.walletaddress);
+		}
+	}
+	
+	// If provided Person
+	// Aadhar is wrong then
+	// it returns Not
+	// Found
+	return("Not Found",
+			"Not Found","Not Found",
+			"Not Found");
+}
+}
+
